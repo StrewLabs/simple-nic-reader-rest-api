@@ -1,0 +1,13 @@
+name: Simple NIC Reader REST API
+version: 1.0.0
+type: nodejs
+entrypoint: src/main.ts
+build:
+  - command: npm install
+  - command: npm run build
+run:
+  command: npm run start:prod
+test:
+  - command: npm run test
+  - command: npm run test:e2e
+  - command: npm run test:cov
