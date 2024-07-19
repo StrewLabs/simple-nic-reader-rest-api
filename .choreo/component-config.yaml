@@ -1,13 +1,15 @@
-name: Simple NIC Reader REST API
 version: 1.0.0
 type: nodejs
-entrypoint: src/main.ts
-build:
-  - command: npm install
-  - command: npm run build
-run:
-  command: npm run start:prod
-test:
-  - command: npm run test
-  - command: npm run test:e2e
-  - command: npm run test:cov
+entrypoint:
+  - name: Simple NIC Reader REST API
+    # +required Numeric port value that gets exposed via this endpoint
+    port: 8080
+    # +required Type of the traffic this endpoint is accepting. Example: REST, GraphQL, etc.
+    # Allowed values: REST, GraphQL, GRPC
+    type: REST
+    # +optional Network level visibility of this endpoint. Defaults to Project
+    # Accepted values: Project|Organization|Public.
+    networkVisibility: Public
+    # +optional Context (base path) of the API that is exposed via this endpoint.
+    # This is mandatory if the endpoint type is set to REST or GraphQL.
+    context: /api
